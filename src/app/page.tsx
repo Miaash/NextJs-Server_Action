@@ -1,5 +1,4 @@
 import { sql } from "@vercel/postgres";
-import { addPerson, removePerson } from "./actions/person";
 import RemoveButton from "./_components/remove-button";
 import FormEditor from "./_components/form-editor";
 
@@ -24,8 +23,11 @@ export default async function Home() {
         {/* List Container */}
         <div className="w-full max-w-md rounded-md shadow-md flex flex-col gap-4">
           {rows &&
-            rows.map((row) => (
-              <div className="text-white space-y-4 p-4 bg-gray-700 flex justify-between">
+            rows.map((row, idx) => (
+              <div
+                className="text-white space-y-4 p-4 bg-gray-700 flex justify-between"
+                key={idx}
+              >
                 {/* Replace with dynamic content */}
                 {row.name}
                 <RemoveButton name={row.name} />
